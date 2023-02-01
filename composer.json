@@ -1,0 +1,6 @@
+{
+    "require": {
+        "javanile/php-sheetbase": "^0.1.0",
+        "phpmyadmin/sql-parser": "^5.7"
+    }
+}
