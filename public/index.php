@@ -2,6 +2,8 @@
 
 $start = microtime(true);
 
+require_once __DIR__.'/../vendor/autoload.php';
+
 // Resources that help us do cool things.
 require_once __DIR__.'/../src/resources/global_resources.php';
 
