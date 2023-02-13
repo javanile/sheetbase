@@ -1,5 +1,7 @@
 FROM php:8-alpine
 
+RUN docker-php-ext-install pdo
+
 # Setup GD extension
 RUN apk add --no-cache \
       freetype \

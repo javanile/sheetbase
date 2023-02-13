@@ -6,4 +6,4 @@ curl localhost:8080 -d "CALL OPEN('$spreadsheet_url')"
 
 #curl -c session localhost:8080 -d "CALL AUTH('$spreasheet_secret')"
 
-#curl -b session localhost:8080 -d "ciao"
+curl -b session localhost:8080 -d "ciao"
