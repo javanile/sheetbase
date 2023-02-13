@@ -1,0 +1,38 @@
+version: '3'
+services:
+  app:
+    build: ci-dockerfiles/stream9
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    volumes:
+      - ..:/srv/dagd:Z
+    # Some DNS servers fail querying DNS_ALL, so hardcode some that don't.
+    #dns:
+    #  - 8.8.8.8
+    #  - 8.8.4.4
+    environment:
+      - GOOGLE_INSIGHTS_API
+  worker:
+    build: ci-dockerfiles/stream9
+    entrypoint:
+      - bash
+      - ./container/entrypoint.sh
+      - worker
+    depends_on:
+      - db
+    volumes:
+      - ..:/srv/dagd:Z
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: dagd
+    ports:
+      - "33066:3306"
+    # If we just use the default temporary container root, initialization is
+    # INSANELY slow. Instead we mount it as an explicit tmpfs volume.
+    tmpfs:
+      - /var/lib/mysql
