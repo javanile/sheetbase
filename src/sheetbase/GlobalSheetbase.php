@@ -21,7 +21,7 @@ final class GlobalSheetbase
                 'json_file' => $googleServiceAccount,
 
                 'database' => [
-                    'test' => getenv('GOOGLE_DATABASE'),
+                    'global' => getenv('SHEETBASE_GLOBAL_DATABASE'),
                 ],
 
                 'cache' => false,
@@ -33,10 +33,12 @@ final class GlobalSheetbase
 
     protected static function loadGoogleServiceAccount()
     {
-        $googleServiceAccount = __DIR__.'/../../var/'
+        $googleServiceAccount = __DIR__.'/../../var/cache/google-service-account.json';
+        if (!file_exists($googleServiceAccount)) {
+            file_put_contents($googleServiceAccount, getenv('SHEETBASE_GOOGLE_SERVICE_ACCOUNT'));
+        }
 
-
-
+        return $googleServiceAccount;
     }
 }
 

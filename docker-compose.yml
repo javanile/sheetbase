@@ -5,8 +5,8 @@ services:
     build: .
     working_dir: /var/www
     command: php -S 0.0.0.0:8080 -t public
-    environment:
-      - DOCKER=true
+    env_file:
+      - .env
     ports:
       - 8080:8080
     volumes:
