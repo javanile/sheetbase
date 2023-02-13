@@ -3,10 +3,10 @@ build:
 	@docker-compose build
 
 install: build
-	@docker-compose run --rm gemstone composer install
+	@docker-compose run --rm sheetbase composer install
 
 update: build
-	@docker-compose run --rm gemstone composer update
+	@docker-compose run --rm sheetbase composer update
 
 require: build
 	@docker-compose run --rm sheetbase composer require phpmyadmin/sql-parser

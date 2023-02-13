@@ -108,6 +108,7 @@ final class DaGdShortURLQuery {
    * @return boolean
    */
   public function isBannedIP($ip) {
+      return false;
     $count = 0;
     $query = $this
       ->controller
