@@ -15,9 +15,10 @@ final class GlobalSheetbase
     public static function getInstance()
     {
         if (GlobalSheetbase::$globalSheetbase === null) {
+            $googleServiceAccount = GlobalSheetbase::loadGoogleServiceAccount();
             GlobalSheetbase::$globalSheetbase = new Database([
                 'provider' => 'google',
-                'json_file' => getenv('GOOGLE_AUTH_JSON_FILE'),
+                'json_file' => $googleServiceAccount,
 
                 'database' => [
                     'test' => getenv('GOOGLE_DATABASE'),
@@ -28,6 +29,14 @@ final class GlobalSheetbase
         }
 
         return GlobalSheetbase::$globalSheetbase;
+    }
+
+    protected static function loadGoogleServiceAccount()
+    {
+        $googleServiceAccount = __DIR__.'/../../var/'
+
+
+
     }
 }
 
