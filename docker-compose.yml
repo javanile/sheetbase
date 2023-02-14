@@ -11,3 +11,8 @@ services:
       - 8080:8080
     volumes:
       - .:/var/www
+  mimic:
+    build: ./mimic
+    ports:
+      - 3306:3306
+

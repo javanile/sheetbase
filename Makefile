@@ -32,3 +32,7 @@ release:
 
 test-create-database:
 	@bash tests/bare/create-database-test.sh
+
+test-mimic:
+	@docker-compose build mimic
+	@docker-compose up -d --force-recreate mimic
